@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 PAGINA_APPELLI="https://calcolatori.iet.unipi.it/appelli2.php?tag=c2as_qemu-v7"
 VERSIONE=17
 WORKSPACE="${ROOT_ESAMI_CE:-/tmp/esamicalc}"
@@ -7,6 +9,7 @@ WORKSPACE="${ROOT_ESAMI_CE:-/tmp/esamicalc}"
 NC='\033[0m'
 
 RED='\033[0;31m'
+BLUE='\033[0;34m'
 GREEN='\033[0;32m'
 
 if [ -z "$1" ]; then
@@ -21,9 +24,9 @@ if [ "$1" = "list" ]; then
     echo "Date disponibili:"
     for date in $DATE_APPELLI; do
         if [ -d "$WORKSPACE/$date" ]; then
-            echo -n "$GREEN${date%_*}: Esame già scaricato $NC"
+            echo -n -e "$GREEN${date%_*}: Esame già scaricato $NC"
         else
-            echo -n "${date%_*}: Esame disponibile per il download"
+            echo -n -e "$BLUE${date%_*}: Esame disponibile per il download $NC"
         fi
         echo 
     done
@@ -31,12 +34,18 @@ if [ "$1" = "list" ]; then
 else
     DATE_LIST=$(echo "$DATE_APPELLI" | sed "s/_$VERSIONE//g")
     if echo "$DATE_LIST" | grep -q "^$1$"; then
+        if [ -d "$WORKSPACE/${1}_${VERSIONE}" ]; then
+            echo -n -e "$RED Esame già scaricato $NC"
+            exit 1
+        fi
         uri="https://calcolatori.iet.unipi.it/appelli_download.php?data0=${1}_${VERSIONE}"
         tmp=$(mktemp -d)
 
         wget $uri -O $tmp/esame.tar.gz
         tar -xzvf $tmp/esame.tar.gz -C $WORKSPACE
+        echo -n -e "$GREEN Esame scaricato correttamente $NC"
     else
         echo "$RED Esame non disponibile $NC"
+        exit 1
     fi
 fi
