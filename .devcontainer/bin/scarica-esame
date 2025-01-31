@@ -4,7 +4,7 @@ set -e
 
 PAGINA_APPELLI="https://calcolatori.iet.unipi.it/appelli2.php?tag=c2as_qemu-v7"
 VERSIONE=17
-WORKSPACE="${ROOT_ESAMI_CE:-/tmp/esamicalc}"
+WORKSPACE="${ROOT_ESAMI_CE:-/workspace}"
 
 NC='\033[0m'
 
