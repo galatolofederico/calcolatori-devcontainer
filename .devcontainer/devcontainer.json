@@ -11,6 +11,11 @@
     },
 
     "customizations": {
+        "vscode": {
+            "extensions": [
+                "tomoki1207.pdf"
+            ]
+        }
     },
 
     "remoteUser": "vscode"
