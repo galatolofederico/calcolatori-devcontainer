@@ -24,3 +24,5 @@ RUN echo 'PATH=$HOME/CE/bin:$PATH' >> $HOME/.bashrc
 
 WORKDIR /dist/qemu-ce-${QEMU_VERSION}
 RUN sh /dist/qemu-ce-${QEMU_VERSION}/install
+
+COPY ./bin/scarica-esame $HOME/CE/bin
