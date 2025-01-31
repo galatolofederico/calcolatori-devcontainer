@@ -1,0 +1,14 @@
+{
+    "name": "calcolatori",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+
+    "features": {
+    },
+
+    "customizations": {
+    },
+
+    "remoteUser": "vscode"
+}
