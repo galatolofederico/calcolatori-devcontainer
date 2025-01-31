@@ -45,7 +45,7 @@ else
         tar -xzvf $tmp/esame.tar.gz -C $WORKSPACE
         echo -n -e "$GREEN Esame scaricato correttamente $NC"
     else
-        echo "$RED Esame non disponibile $NC"
+        echo -n -e "$RED Esame non disponibile $NC"
         exit 1
     fi
 fi
