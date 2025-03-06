@@ -9,6 +9,9 @@ RUN apt update && apt install -y build-essential gcc-multilib g++-multilib
 RUN apt update && apt install -y python3 zlib1g-dev libsdl2-dev libpixman-1-dev libjson-xs-perl ninja-build ncurses-dev python3-pip
 RUN apt update && apt install -y gdb
 
+RUN mkdir /dist
+RUN chown vscode:vscode -R /dist
+
 USER vscode
 WORKDIR /dist
 
