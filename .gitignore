@@ -6,3 +6,6 @@
 !.devcontainer/**
 
 !.gitignore
+
+!README.md
+!LICENSE
