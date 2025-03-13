@@ -5,11 +5,12 @@ ARG QEMU_VERSION="9.2.2-3"
 
 ENV HOME=/home/vscode/
 
-RUN apt update && apt install -y build-essential gcc-i686-linux-gnu g++-i686-linux-gnu
-RUN apt update && apt install -y python3 python3-venv zlib1g-dev  \
+# This is architecture independent
+RUN apt update && apt install -y build-essential python3 python3-venv zlib1g-dev  \
 		libgtk-3-dev libpulse-dev libpixman-1-dev libjson-xs-perl \
 		ninja-build ncurses-dev git
-RUN apt update && apt install -y gdb-multiarch
+# This is aarch64/arm64 specific
+RUN apt install -y gcc-i686-linux-gnu g++-i686-linux-gnu gdb-multiarch
 
 RUN mkdir /dist
 RUN chown vscode:vscode -R /dist
