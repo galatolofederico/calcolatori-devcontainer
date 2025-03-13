@@ -1,13 +1,14 @@
 FROM mcr.microsoft.com/devcontainers/base:noble
 
-ARG LIBCE_VERSION="3.0.5"
-ARG QEMU_VERSION="8.2.1-1"
+ARG LIBCE_VERSION="4.1"
+ARG QEMU_VERSION="9.2.2-3"
 
 ENV HOME=/home/vscode/
 
-RUN apt update && apt install -y build-essential gcc-multilib g++-multilib
-RUN apt update && apt install -y python3 zlib1g-dev libsdl2-dev libpixman-1-dev libjson-xs-perl ninja-build ncurses-dev python3-pip
-RUN apt update && apt install -y gdb
+RUN apt update && apt install -y build-essential python3 python3-venv zlib1g-dev  \
+		libgtk-3-dev libpulse-dev libpixman-1-dev libjson-xs-perl \
+		ninja-build ncurses-dev git
+RUN apt update && apt install -y gcc-multilib g++-multilib gdb
 
 RUN mkdir /dist
 RUN chown vscode:vscode -R /dist
