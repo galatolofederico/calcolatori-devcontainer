@@ -2,8 +2,8 @@
 
 set -e
 
-PAGINA_APPELLI="https://calcolatori.iet.unipi.it/appelli2.php?tag=c2as_qemu-v7"
-VERSIONE=17
+PAGINA_APPELLI="https://calcolatori.iet.unipi.it/appelli2.php?tag=c2as_qemu-v8"
+VERSIONE=08
 WORKSPACE="${ROOT_ESAMI_CE:-/workspace}"
 
 NC='\033[0m'
