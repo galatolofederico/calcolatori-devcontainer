@@ -1,6 +1,6 @@
 FROM mcr.microsoft.com/devcontainers/base:noble
 
-ARG LIBCE_VERSION="4.1"
+ARG LIBCE_VERSION="4.3"
 ARG QEMU_VERSION="9.2.2-3"
 
 ENV HOME=/home/vscode/
@@ -23,7 +23,7 @@ RUN tar -xzvf libce-${LIBCE_VERSION}.tar.gz
 RUN tar -xzvf qemu-ce-${QEMU_VERSION}.tar.gz
 
 WORKDIR /dist/libce-${LIBCE_VERSION}
-RUN make && make install
+RUN make CE_QEMU_AUDIO=none && make install
 RUN echo 'PATH=$HOME/CE/bin:$PATH' >> $HOME/.bashrc
 
 WORKDIR /dist/qemu-ce-${QEMU_VERSION}
