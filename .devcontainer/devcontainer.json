@@ -20,5 +20,7 @@
         }
     },
 
-    "remoteUser": "vscode"
+    "remoteUser": "vscode",
+
+    "postCreateCommand": "sed -i 's/\\r//' ~/CE/bin/scarica-esame"
 }
